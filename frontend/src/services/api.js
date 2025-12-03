@@ -9,10 +9,10 @@ const instance = axios.create({
 
 export const getLLMResponse = (data) => {
   return instance.post(
-    `http://localhost:5173/api/getLLMResponse`,
+    // `http://localhost:5173/api/getLLMResponse`,
     // `http://localhost:8080/getLLMResponse`,
     // `${serverDomain}/getLLMResponse`,
-    // `http://localhost:3000/api/chatgpt` // [TODO]: For chatgpt
+    `http://localhost:3000/api/getLLMResponse`, // [TODO]: For chatgpt
     // `getLLMResponse` // [TODO]: open when implemented
     data
   );

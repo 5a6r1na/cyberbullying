@@ -12,7 +12,7 @@ const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-app.post("/api/chatgpt", async (req, res) => {
+app.post("/api/getLLMResponse", async (req, res) => {
   try {
     const { message } = req.body;
 
@@ -22,22 +22,24 @@ app.post("/api/chatgpt", async (req, res) => {
         {
           role: "system",
           content:
-            "You are a cyberbullying detection assistant. If message is harmful, warn user. If not harmful, reply -1 only.",
+            "You classify a message as bullying or not. If NOT harmful, respond exactly with '-1'. If harmful, respond with a short message telling the user why the message is harmful.",
         },
         { role: "user", content: message },
       ],
     });
 
-    const reply = completion.choices[0].message.content;
+    const reply = completion.choices[0].message.content.trim();
 
-    res.json({
-      success: true,
-      response: reply,
-    });
+    // --- Interpret the model reply ---
+    if (reply === "-1") {
+      return res.json({ flag: -1, response: null });
+    }
+
+    return res.json({ flag: 1, response: reply });
   } catch (err) {
     console.error(err);
-    res.status(500).json({
-      success: false,
+    return res.status(500).json({
+      flag: -1,
       error: err.message,
     });
   }
