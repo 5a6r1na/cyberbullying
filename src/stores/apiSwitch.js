@@ -4,7 +4,6 @@ export const apiSwitch = async (apiKey, req) => {
   let res = {};
   try {
     switch (apiKey) {
-      //個案管理
       case "getLLMResponse":
         res = await getLLMResponse(req);
         break;
