@@ -12,6 +12,7 @@ export const getLLMResponse = (data) => {
     `http://localhost:5173/api/getLLMResponse`,
     // `http://localhost:8080/getLLMResponse`,
     // `${serverDomain}/getLLMResponse`,
+    // `http://localhost:3000/api/chatgpt` // [TODO]: For chatgpt
     // `getLLMResponse` // [TODO]: open when implemented
     data
   );
