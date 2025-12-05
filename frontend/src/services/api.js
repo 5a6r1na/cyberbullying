@@ -1,8 +1,8 @@
 //apis.js
 import axios from "axios";
 
-// [TODO]: Update with Gawon's LLM server
-const baseURL = "http://localhost:8081/api";
+const baseURL = "https://cyberbullying-g80i.onrender.com/api";
+
 const instance = axios.create({
   baseURL: baseURL,
 });
@@ -12,8 +12,7 @@ export const getLLMResponse = (data) => {
     // `http://localhost:5173/api/getLLMResponse`,
     // `http://localhost:8080/getLLMResponse`,
     // `${serverDomain}/getLLMResponse`,
-    `http://localhost:3000/api/getLLMResponse`, // [TODO]: For chatgpt
-    // `getLLMResponse` // [TODO]: open when implemented
+    `getLLMResponse`,
     data
   );
 };
